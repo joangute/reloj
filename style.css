@@ -1,0 +1,128 @@
+:root {
+ --radio:150;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    height: 100vh;
+    width: 100%;
+    background-color: #F5ECE5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.correa{
+    height: 723.2px;
+    width: 100%;
+    background-image: url('images/reloj_background.png');
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .container{
+      width: fit-content;
+      background: linear-gradient(to right, #282828, #fafafa, #282828); 
+      padding: 25px;
+      border-radius: 50%;
+}
+.lente{
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    background-color: white;
+    border: 5px solid #a1a1a1;
+    padding: 5px;
+    position: relative;
+    box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, .3);
+
+}
+.marcador{
+    display: block;
+    height: 10px;
+    width: 2px;
+    background-color:#888;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.numero{
+    display: block;
+    color:#222;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 1px 0 2px rgba(0, 0, 0, .5);
+    text-align: center;
+}
+
+.etiqueta, .linea, .segundero, .minutero, .hora{
+ position: absolute;
+  display: block;
+}
+.etiqueta{
+    width: 50px;
+    height:50px;
+    background-image: url('images/logo_rolex.png');
+    background-size: cover;
+    background-position: center center;
+    left:50%;
+    bottom: 80px;
+    transform: translateX(-50%);
+}
+.manecilla{
+    width: 24.32px;
+    height: 301.08px;
+    background-size:cover;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%); 
+}
+.segundero{
+    background-image: url('images/segundero_dorado.png');
+}
+.minutero{
+    background-image: url('images/minutero_dorado.png');  
+}
+.hora{
+    background-image: url('images/hora_dorado.png');
+}
+
+@media only screen and (max-width: 440px) {
+    .correa{
+        height: 490.9px;
+    }
+    .lente{
+        height: 271.5px;
+        width: 271.5px;
+    }
+    .container{
+        padding: 17px;
+    }
+    .marcador{
+
+    }
+    .manecilla{
+        height: 204.4px;
+        width: 16.5px;
+    }
+    .numero{
+        font-size: 36px;
+    }
+    .etiqueta{
+        height: 30px;
+        width: 30px;
+        bottom: 50px;
+    }
+}
