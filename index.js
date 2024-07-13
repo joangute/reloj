@@ -51,26 +51,19 @@ for(let i=0; i< marcadores.length;i++){
 }
 
 function movimientoReloj(){
-  const fecha=new Date();
-  let segundo=fecha.getSeconds()*6;
-  let minuto=fecha.getMinutes()*6;
-  let hora=fecha.getHours()*30;
-  segundero.style.transform=`translate(-50%,-50%) rotate(${segundo}deg)`;
-  minutero.style.transform=`translate(-50%,-50%) rotate(${minuto}deg)`;
-  horas.style.transform=`translate(-50%,-50%) rotate(${hora}deg)`;
+  let fecha,segundo,minuto,hora;
+
 
 
   setInterval(()=>{
-    segundo+=6;
+    fecha=new Date();
+    segundo=fecha.getSeconds()*6;
+    minuto=fecha.getMinutes()*6;
+    hora=fecha.getHours()*30;
     segundero.style.transform=`translate(-50%,-50%) rotate(${segundo}deg)`;
-    if(segundo%360==0){
-      minuto+=6;
-      minutero.style.transform=`translate(-50%,-50%) rotate(${minuto}deg)`;
-      if(minuto%72==0){
-      hora+=6;
-      horas.style.transform=`translate(-50%,-50%) rotate(${hora}deg)`;
-      }
-    }
+    minutero.style.transform=`translate(-50%,-50%) rotate(${minuto}deg)`;
+    horas.style.transform=`translate(-50%,-50%) rotate(${hora+(Math.floor(fecha.getMinutes()/12)*6)}deg)`;
+
   },1000);
 }
 
