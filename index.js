@@ -1,9 +1,12 @@
+
 const numeros=document.querySelectorAll('.numero');
-const marcadores=document.querySelectorAll('.marcador');
 const segundero=document.querySelector('.segundero');
 const minutero=document.querySelector('.minutero');
 const horas=document.querySelector('.hora');
 const lente=document.querySelector('.lente');
+const body=document.body;
+crearMarcadores();
+const marcadores=document.querySelectorAll('.marcador');
 let ajusteY1=5;
 let ajusteY2=-3;
 let radioN=150;
@@ -14,10 +17,32 @@ if(lente.offsetWidth!=400){
    radioN=lente.offsetWidth/8*3;
    radioM=lente.offsetWidth/20*9;
 }
+if(body.offsetHeight<723){
+  body.style.height='100%';
+}
+
 posicionCircular(numeros,radioN,ajusteY1,5);
 posicionCircular(marcadores,radioM, ajusteY2,0);
-anguloMarcador();
 movimientoReloj();
+
+
+function crearMarcadores(){
+  let marcador;
+  let angulo=90;
+  for(let i=0;i<60;i++){
+
+    marcador=document.createElement('span');
+    marcador.classList.add('marcador');
+    marcador.style.transform = `rotate(${angulo}deg)`;
+    if(i%5==0){
+    marcador.style.width = `4px`;
+    marcador.style.backgroundColor='#222';
+         }
+    lente.appendChild(marcador);
+    angulo+=6;
+  }
+
+}
 
 function posicionCircular(elemento,radio, x,y){
 
@@ -27,7 +52,6 @@ let angulo = 0;
 let originX = elemento[0].offsetLeft;
 let originY = elemento[0].offsetTop;
 
-
  angulo += 0.0001;
  elemento.forEach((e,i) =>{
  e.style.left = `${originX + r*Math.cos(angulo + 2*Math.PI/n*i)+y}px`;
@@ -35,26 +59,9 @@ let originY = elemento[0].offsetTop;
   });
 }
 
-function anguloMarcador(){
-let angulo=90;
-	marcadores[0].style.width = `4px`;
-	marcadores[0].style.backgroundColor='#222';
-	
-for(let i=0; i< marcadores.length;i++){
-  marcadores[i].style.transform = `rotate(${angulo}deg)`;
-  if(i%5==0){
-  	marcadores[i].style.width = `4px`;
-  	marcadores[i].style.backgroundColor='#222';
-  }
-  angulo+=6;
- }
-}
-
 function movimientoReloj(){
+
   let fecha,segundo,minuto,hora;
-
-
-
   setInterval(()=>{
     fecha=new Date();
     segundo=fecha.getSeconds()*6;
